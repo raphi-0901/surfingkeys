@@ -128,23 +128,10 @@ mapkey('sU', '#4Edit current URL with vim editor, and open in new tab', function
 });
 
 Hints.setCharacters('aqwsedrftgbvcyx123')
-Hints.style('font-size: 26px;');
+Hints.style('font-size: 20px;');
 settings.hintAlign = "left";
 
-mapkey('yt', "#7Copy last part of page URL", function () {
-  Hints.create('*[href]', function (element) {
-    let parts = element.href.split('/');
-    let lastSegment = parts.pop() || parts.pop(); // to handle case with trailing '/'
-
-    Clipboard.write(lastSegment);
-  });
-});
-
-mapkey('cp', 'gitlab project', function () {
-  Hints.create(".project-details h2 a, .project-details a.merge-requests", Hints.dispatchMouseClick);
-}, {domain: /code.anexia.com/i});
-
-mapkey(';cs', 'gitlab project', function () {
+mapkey('cgc', 'gitlab project', function () {
   Clipboard.write(document.querySelector('#ssh_project_clone').value);
 }, {domain: /code.anexia.com/i});
 
@@ -155,189 +142,45 @@ settings.focusFirstCandidate = true;
 // Disable emoji popup. I can see it being potentially useful, but most of the time it's annoying and I already have this via Alfred
 iunmap(":");
 
-map('P', 'cc');
+// map('P', 'cc');
 
 unmap('q')
-// exchange
-// prescreen
-// add bookmarks
 
-
-mapkey('qgwk', 'Google Keep (Personal)', () => {
-  window.location = encodeURI("https://keep.google.com/#LIST/1ZNf2N8vlCtTOSs1NVRvKiHV1Cm-2AFmAbANIdZsc5Gg_KX2zYhq5AJ1sVP-_cuY")
-});
-mapkey('qgak', 'Google Keep (Work)', () => {
-  window.location = "https://keep.google.com/#LIST/1roXhEe7427O6lMXhBgJYc3HcB9CgRtnIQxzP0QT9tjgG1etxlZozCtCZzxCFkHoszhnT"
+mapkey('qqm', 'Merge Requests', () => {
+  tabOpenLink("https://code.anexia.com/dashboard/merge_requests?assignee_username=rwirnsberger")
 });
 
-mapkey('qgkk', 'Google Keep', () => {
-  window.location = "https://keep.google.com/#home"
+mapkey('qqv', 'Vault', () => {
+  tabOpenLink("https://vault-a8n.anexia-it.com/ui/vault/secrets")
 });
 
-mapkey('qgnc', 'Merge Requests', () => {
-  window.location = "https://gitlab.netcup.net/dashboard/merge_requests?assignee_username=l.takacs"
+mapkey('qqls', 'Localhost 1337', () => {
+  tabOpenLink("http://localhost:1337")
 });
 
-mapkey('qgm', 'Merge Requests', () => {
-  window.location = "https://music.youtube.com"
+mapkey('qqln', 'Localhost 3000', () => {
+  tabOpenLink("http://localhost:3000")
 });
 
-mapkey('qgdw', 'DeepL Write', () => {
-  window.location = "https://www.deepl.com/write"
-});
-mapkey('qgc', 'Merge Requests', () => {
-  window.location = "https://code.anexia.com/dashboard/merge_requests?assignee_username=ltakacs"
+mapkey('qqll', 'Localhost', () => {
+  tabOpenLink("http://localhost")
 });
 
-mapkey('qgv', 'Vault', () => {
-  window.location = "https://vault-a8n.anexia-it.com/ui/vault/secrets"
-});
-mapkey('qgls', 'Localhost 1337', () => {
-  window.location = "http://localhost:1337"
-});
-mapkey('qgbk', 'Benji liste', () => {
-  window.location = "https://ais.anexia-it.com/pages/resumedraft.action?draftId=171769177&draftShareId=97564d6d-a335-433d-8e5e-9147985042eb&"
-});
-mapkey('qgln', 'Localhost 3000', () => {
-  window.location = "http://localhost:3000"
-});
-mapkey('qgll', 'Localhost', () => {
-  window.location = "http://localhost"
+mapkey('qqi', 'Intranet', () => {
+  tabOpenLink("https://intranet.anexia-it.com")
 });
 
-mapkey('qgnt', 'Notes tbd', () => {
-  window.location = "https://ats.anexia-it.com/issues/?jql=project%20%3D%20AMS%20AND%20description%20~%20%22tbd%22"
+mapkey('qqs', 'ATS Sprint Board', () => {
+  tabOpenLink("https://ats.anexia-it.com/secure/RapidBoard.jspa?rapidView=430&projectKey=AMS&view=planning.nodetail&quickFilter=2801&quickFilter=3515&quickFilter=3213&issueLimit=100")
 });
 
-mapkey('qgnn', 'Notes', () => {
-  window.location = "https://ais.anexia-it.com/pages/resumedraft.action?draftId=158608983&draftShareId=0adbc26d-e032-4546-9676-2f14048da11e&"
-});
-
-mapkey('qge', 'Exchange', () => {
-  window.location = "https://exchange.anexia.at"
-});
-
-mapkey('qgjb', 'Backlog', () => {
-  window.location = "https://ats.anexia-it.com/secure/RapidBoard.jspa?rapidView=430&projectKey=AMS&view=planning.nodetail&quickFilter=2798&issueLimit=100"
-});
-mapkey('qgsb', 'Backlog', () => {
-  window.location = "https://ats.anexia-it.com/secure/RapidBoard.jspa?rapidView=430&projectKey=AMS&view=planning.nodetail&quickFilter=2798&issueLimit=100"
-});
-
-mapkey('qgjs', 'Sprint', () => {
-  window.location = "https://ats.anexia-it.com/secure/RapidBoard.jspa?rapidView=430&view=detail&selectedIssue=AMS-4357&quickFilter=2802&quickFilter=2798"
-});
-mapkey('qgr', 'Roadmap', () => {
-  window.location = "https://ats.anexia-it.com/secure/PortfolioPlanView.jspa?id=58&sid=79&vid=178#plan/backlog"
-});
-mapkey('qglp', 'phpmyadmin', () => {
-  window.location = "http://localhost:10083"
-});
-
-mapkey('qgaa', 'netcup AIS', () => {
-  window.location = "https://ais.anexia-it.com/display/AM"
-});
-
-mapkey('qgna', 'netcup AIS', () => {
-  window.location = "https://ais.anexia-it.com/display/ncm"
-});
-
-mapkey('qgda', 'Dev AIS', () => {
-  window.location = "https://ais.anexia-it.com/display/MI/Development"
-});
-
-mapkey('qgadp', 'Development Projekte', () => {
-  window.location = "https://ais.anexia-it.com/display/MI/Projekte"
-});
-
-mapkey('qgadd', 'Development AIS', () => {
-  window.location = "https://ais.anexia-it.com/display/MI/Development"
-});
-
-mapkey('qgss', 'Sprint', () => {
-  window.location = "https://ats.anexia-it.com/secure/RapidBoard.jspa?rapidView=430&view=detail&selectedIssue=AMS-4357&quickFilter=2802&quickFilter=2798"
-});
-
-mapkey('qgw', 'Intranet', () => {
-  window.location = "https://web.whatsapp.com/"
-});
-
-mapkey('qgi', 'Intranet', () => {
-  window.location = "https://intranet.anexia-it.com"
-});
-
-mapkey('qgjt', 'New Task', () => {
-  window.location = "https://ats.anexia-it.com/secure/CreateIssueDetails!init.jspa?pid=12705&issuetype=10402"
-});
-mapkey('qgje', 'New Epic', () => {
-  window.location = "https://ats.anexia-it.com/secure/CreateIssueDetails!init.jspa?pid=12705&issuetype=10000"
-});
-
-mapkey('qgi', 'Intranet', () => {
-  window.location = "https://intranet.anexia-it.com"
-});
-
-
-mapkey('cdp', 'gitlab', async () => {
-  const url = 'https://code.anexia.com/api/v4/groups/13/projects?include_subgroups=true';
-  let response = await fetch(url);
-  let data = await response.json();
-  const projects = data.map(({name, web_url}) => {
-    return {
-      title: name,
-      url: web_url
-    }
-  })
-  Front.openOmnibar({type: "UserURLs", extra: projects});
-}, {domain: /code.anexia.com/i})
-
-mapkey('qgp', 'Protokoll', () => {
-  window.location = "https://ais.anexia-it.com/pages/createpage.action?spaceKey=~LTakacs&fromPageId=143921605"
-});
-
-mapkey('qgt', 'Teams', () => {
+mapkey('qqt', 'Teams', () => {
   tabOpenLink("https://teams.microsoft.com");
 });
 
-mapkey('qj', 'Join', () => {
-  if (window.location.href.indexOf("modern-calling") !== -1) {
-    document.getElementById("prejoin-join-button").click()
-  } else {
-    const inputs = document.querySelectorAll('button[title="Join"]');
-    if ([...inputs].length === 1) {
-      inputs[0].click();
-      return
-    }
-
-    Hints.create('button[title="Join"]', function (element) {
-      element.click()
-    });
-  }
-}, {domain: /teams.microsoft.com/i})
-
-mapkey('qq', 'Mute', () => {
+mapkey('aa', 'Mute', () => {
   document.getElementById("microphone-button").click()
 }, {domain: /teams.microsoft.com/i})
-
-mapkey('qq', 'Focus note', () => {
-  Hints.create(".notranslate", Hints.dispatchMouseClick);
-}, {domain: /keep.google.com/i})
-
-mapkey('qtm', 'Teams', () => {
-  const input = document.querySelector('[data-tid=calendar_header_open_meet_now_flyout_button]');
-  input.click()
-  setTimeout(() => {
-    const input2 = document.querySelector('[data-tid=meet_now_calendar_flyout_get_meeting_link_button]');
-    input2.click()
-
-    setTimeout(() => {
-      Clipboard.read(function ({data}) {
-        tabOpenLink(data.trim())
-      });
-    }, 3000)
-  }, 100)
-}, {domain: /teams.microsoft.com/i})
-
 
 mapkey('qtm', 'Intranet MittagsPause', () => {
   document.querySelector("#clockin_reasons_dropdown > li:nth-child(6) > a").click()
@@ -361,20 +204,6 @@ mapkey('qtt', 'intranet default', () => {
     document.querySelector("#my-presence-info-submit").click()
   }, 500)
 }, {domain: /intranet.anexia-it.com/i})
-
-
-mapkey('qmu', 'Post Links', () => {
-  Hints.create('.post__body a[href]', function (element) {
-    tabOpenLink(element.href);
-  });
-}, {domain: /mattermost.anexia-it.com/i})
-
-mapkey('qmm', 'Post Menu', () => {
-  [...document.querySelectorAll(".post")].pop().click()
-  setTimeout(() => {
-    [...document.querySelectorAll(".post-right-comments-container .post .post-menu__item")].pop().click()
-  }, 1100)
-}, {domain: /mattermost.anexia-it.com/i})
 
 mapkey('qth', 'Intranet Home office', () => {
   document.querySelector("#my_location_14").click()
